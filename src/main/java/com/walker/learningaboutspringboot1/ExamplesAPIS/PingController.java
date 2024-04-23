@@ -1,4 +1,4 @@
-package com.walker.learningaboutspringboot1.SimpleAPI;
+package com.walker.learningaboutspringboot1.ExamplesAPIS;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
