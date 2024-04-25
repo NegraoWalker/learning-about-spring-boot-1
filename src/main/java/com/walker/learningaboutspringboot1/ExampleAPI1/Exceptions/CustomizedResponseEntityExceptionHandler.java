@@ -1,7 +1,5 @@
-package com.walker.learningaboutspringboot1.ExamplesAPIS.Exceptions;
+package com.walker.learningaboutspringboot1.ExampleAPI1.Exceptions;
 
-import com.walker.learningaboutspringboot1.ExamplesAPIS.Exceptions.ExceptionResponse;
-import com.walker.learningaboutspringboot1.ExamplesAPIS.Exceptions.UnsupportedMathOperationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,4 +1,4 @@
-package com.walker.learningaboutspringboot1.ExamplesAPIS.Exceptions;
+package com.walker.learningaboutspringboot1.ExampleAPI1.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

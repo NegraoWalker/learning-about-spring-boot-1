@@ -1,4 +1,4 @@
-package com.walker.learningaboutspringboot1.ExamplesAPIS.controllers;
+package com.walker.learningaboutspringboot1.ExampleAPI1.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

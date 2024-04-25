@@ -1,4 +1,4 @@
-package com.walker.learningaboutspringboot1.ExamplesAPIS.Converters;
+package com.walker.learningaboutspringboot1.ExampleAPI1.Converters;
 
 public class NumberConverter {
     public static boolean isNumeric(String strNumber) {
