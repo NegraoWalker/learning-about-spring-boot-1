@@ -1,13 +1,23 @@
 package com.walker.learningaboutspringboot1.model;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "person")
 public class Person implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; //IDENTIFICADOR
+    @Column(name = "first_name", nullable = false, length = 80)
     private String firstName; //PRIMEIRO NOME
+    @Column(name = "last_name", nullable = false, length = 80)
     private String lastName; //SOBRENOME
+    @Column(name = "address", length = 100)
     private String address; //ENDEREÇO
+    @Column(name = "gender", length = 6)
     private String gender; //GÊNERO
 
     //CONSTRUCTORS:

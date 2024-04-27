@@ -1,1 +1,15 @@
-spring.application.name=learning-about-spring-boot-1
+#spring.application.name=learning-about-spring-boot-1
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_learning_spring1?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: 12345
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
