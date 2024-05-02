@@ -2,6 +2,8 @@ package com.walker.learningaboutspringboot1.service;
 
 import com.walker.learningaboutspringboot1.data.vo.v1.PersonVO;
 import com.walker.learningaboutspringboot1.exception.ResourceNotFoundException;
+import com.walker.learningaboutspringboot1.mapper.Mapper;
+import com.walker.learningaboutspringboot1.model.Person;
 import com.walker.learningaboutspringboot1.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,32 +19,35 @@ public class PersonService {
 
     public PersonVO findById(Long id) {
         logger.info("Finding one person!"); //ENCONTRANDO UMA PESSOA!
-        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!")); //NENHUM REGISTRO ENCONTRADO PARA ESTE ID!
+        Person person = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!")); //NENHUM REGISTRO ENCONTRADO PARA ESTE ID!
+        return Mapper.toPersonVO(person);
     }
 
     public List<PersonVO> findAll() {
         logger.info("Finding all people!"); //ENCONTRANDO TODAS AS PESSOAS!
-        return repository.findAll();
+        return Mapper.toListPersonVO(repository.findAll());
     }
 
-    public PersonVO create(PersonVO person) {
+    public PersonVO create(PersonVO personVO) {
         logger.info("Creating one person!"); //CRIANDO UMA PESSOA!
-        return repository.save(person);
+        Person person = Mapper.toPerson(personVO);
+        return Mapper.toPersonVO(repository.save(person));
     }
 
-    public PersonVO update(PersonVO person) {
+    public PersonVO update(PersonVO personVO) {
         logger.info("Updating one person!"); //ATUALIZANDO UMA PESSOA!
-        PersonVO entity = repository.findById(person.getId()).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!")); //NENHUM REGISTRO ENCONTRADO PARA ESTE ID!
-        entity.setFirstName(person.getFirstName());
-        entity.setLastName(person.getLastName());
-        entity.setAddress(person.getAddress());
-        entity.setGender(person.getGender());
-        return repository.save(person);
+        Person person = repository.findById(personVO.getId()).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!")); //NENHUM REGISTRO ENCONTRADO PARA ESTE ID!
+        person.setFirstName(personVO.getFirstName());
+        person.setLastName(personVO.getLastName());
+        person.setAddress(personVO.getAddress());
+        person.setGender(personVO.getGender());
+
+        return Mapper.toPersonVO(repository.save(person));
     }
 
     public void delete(Long id) {
         logger.info("Deleting one person!"); //DELETANDO UMA PESSOA!
-        PersonVO entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!")); //NENHUM REGISTRO ENCONTRADO PARA ESTE ID!
-        repository.delete(entity);
+        Person person = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!")); //NENHUM REGISTRO ENCONTRADO PARA ESTE ID!
+        repository.delete(person);
     }
 }

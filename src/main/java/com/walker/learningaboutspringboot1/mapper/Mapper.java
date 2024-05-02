@@ -8,18 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mapper {
-    private static PersonVO toPersonVO(Person person) {
-        return new ModelMapper().map(person, PersonVO.class);
+    private static ModelMapper modelMapper = new ModelMapper();
+
+    public static PersonVO toPersonVO(Person person) {
+        return modelMapper.map(person, PersonVO.class);
     }
 
-    private static List<PersonVO> toListPersonVO(List<Person> personList) {
+    public static Person toPerson(PersonVO personVO) {
+        return modelMapper.map(personVO, Person.class);
+    }
+
+    public static List<PersonVO> toListPersonVO(List<Person> personList) {
         List<PersonVO> personVOList = new ArrayList<PersonVO>();
         for(Person person : personList) {
-            personVOList.add(new ModelMapper().map(personList, PersonVO.class));
+            personVOList.add(modelMapper.map(personList, PersonVO.class));
         }
         return personVOList;
     }
-
-
-
 }

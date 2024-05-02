@@ -7,3 +7,5 @@
     VO - Value Object
 ## Endpoints:
     http://localhost:8080/person
+## Bibliotecas:
+    ModelMapper - https://modelmapper.org
