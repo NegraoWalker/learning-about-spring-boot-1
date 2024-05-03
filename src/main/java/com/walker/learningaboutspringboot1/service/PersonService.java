@@ -1,6 +1,7 @@
 package com.walker.learningaboutspringboot1.service;
 
 import com.walker.learningaboutspringboot1.data.vo.v1.PersonVO;
+import com.walker.learningaboutspringboot1.data.vo.v2.PersonVOV2;
 import com.walker.learningaboutspringboot1.exception.ResourceNotFoundException;
 import com.walker.learningaboutspringboot1.mapper.Mapper;
 import com.walker.learningaboutspringboot1.model.Person;
@@ -33,6 +34,13 @@ public class PersonService {
         Person person = Mapper.toPerson(personVO);
         return Mapper.toPersonVO(repository.save(person));
     }
+
+    // VERSIONAMENTO PARA VERSÃO 2:
+//    public PersonVOV2 createV2(PersonVOV2 personVOV2) {
+//        logger.info("Creating one person with V2!"); //CRIANDO UMA PESSOA!
+//        Person person = Mapper.toPerson(personVOV2);
+//        return Mapper.toPersonVOV2(repository.save(person));
+//    }
 
     public PersonVO update(PersonVO personVO) {
         logger.info("Updating one person!"); //ATUALIZANDO UMA PESSOA!

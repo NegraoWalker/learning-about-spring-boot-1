@@ -1,6 +1,7 @@
 package com.walker.learningaboutspringboot1.mapper;
 
 import com.walker.learningaboutspringboot1.data.vo.v1.PersonVO;
+import com.walker.learningaboutspringboot1.data.vo.v2.PersonVOV2;
 import com.walker.learningaboutspringboot1.model.Person;
 import org.modelmapper.ModelMapper;
 
@@ -10,15 +11,25 @@ import java.util.List;
 public class Mapper {
     private static ModelMapper modelMapper = new ModelMapper();
 
-    public static PersonVO toPersonVO(Person person) {
+    public static PersonVO toPersonVO(Person person) { //CONVERTE DE PERSON PARA PERSONVO
         return modelMapper.map(person, PersonVO.class);
     }
 
-    public static Person toPerson(PersonVO personVO) {
+    //VERSIONAMENTO PARA A VERSÃO 2:
+//    public static PersonVOV2 toPersonVOV2(Person person) { //CONVERTE DE PERSON PARA PERSONVOV2
+//        return modelMapper.map(person, PersonVOV2.class);
+//    }
+
+    public static Person toPerson(PersonVO personVO) { //CONVERTE DE PERSONVO PARA PERSON
         return modelMapper.map(personVO, Person.class);
     }
 
-    public static List<PersonVO> toListPersonVO(List<Person> personList) {
+    //VERSIONAMENTO PARA A VERSÃO 2:
+//    public static Person toPerson(PersonVOV2 personVOV2) { //CONVERTE DE PERSON PARA PERSONVOV2
+//        return modelMapper.map(personVOV2, Person.class);
+//    }
+
+    public static List<PersonVO> toListPersonVO(List<Person> personList) { //CONVERTE DE PERSON PARA PERSONVO
         List<PersonVO> personVOList = new ArrayList<>();
         for(Person person : personList) {
             personVOList.add(toPersonVO(person));
