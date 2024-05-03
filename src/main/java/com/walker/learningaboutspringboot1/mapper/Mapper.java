@@ -19,9 +19,9 @@ public class Mapper {
     }
 
     public static List<PersonVO> toListPersonVO(List<Person> personList) {
-        List<PersonVO> personVOList = new ArrayList<PersonVO>();
+        List<PersonVO> personVOList = new ArrayList<>();
         for(Person person : personList) {
-            personVOList.add(modelMapper.map(personList, PersonVO.class));
+            personVOList.add(toPersonVO(person));
         }
         return personVOList;
     }
