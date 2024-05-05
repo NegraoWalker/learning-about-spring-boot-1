@@ -2,6 +2,8 @@
 ## Dependências:
     1. Java 21;
     2. Spring Boot 3.2.5;
+    3. Model Mapper 3.0.0;
+    4. 
 ## Design Patterns:
     MVC - Model-View-Controller
     VO - Value Object
