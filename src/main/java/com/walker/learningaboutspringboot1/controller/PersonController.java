@@ -1,7 +1,6 @@
 package com.walker.learningaboutspringboot1.controller;
 
 import com.walker.learningaboutspringboot1.data.vo.v1.PersonVO;
-import com.walker.learningaboutspringboot1.data.vo.v2.PersonVOV2;
 import com.walker.learningaboutspringboot1.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
