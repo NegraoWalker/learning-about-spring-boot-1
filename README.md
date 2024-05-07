@@ -19,3 +19,7 @@ Migrations com Flyway:
 https://documentation.red-gate.com/fd/mysql-184127601.html
 
 https://mvnrepository.com/artifact/org.flywaydb/flyway-core
+
+Content Negotiation via query e header parameter: JSON, XML e YAML
+
+https://www.baeldung.com/spring-mvc-content-negotiation-json-xml
