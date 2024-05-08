@@ -43,7 +43,7 @@ public class PersonService {
 
     public PersonVO update(PersonVO personVO) {
         logger.info("Updating one person!"); //ATUALIZANDO UMA PESSOA!
-        Person person = repository.findById(personVO.getId()).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!")); //NENHUM REGISTRO ENCONTRADO PARA ESTE ID!
+        Person person = repository.findById(personVO.getKey()).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!")); //NENHUM REGISTRO ENCONTRADO PARA ESTE ID!
         person.setFirstName(personVO.getFirstName());
         person.setLastName(personVO.getLastName());
         person.setAddress(personVO.getAddress());
