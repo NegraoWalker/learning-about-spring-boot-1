@@ -1,6 +1,7 @@
 package com.walker.learningaboutspringboot1.config;
 
-import com.walker.learningaboutspringboot1.serialization.converter.YamlJackson2HttpMesageConverter;
+
+import com.walker.learningaboutspringboot1.serialization.converter.YamlJackson2HttpMessageConverter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
@@ -14,7 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(new YamlJackson2HttpMesageConverter());
+        converters.add(new YamlJackson2HttpMessageConverter());
     }
 
     //CONTENT NEGOTIATION VIA QUERY PARAMETER:

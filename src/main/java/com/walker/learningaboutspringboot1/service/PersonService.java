@@ -1,7 +1,6 @@
 package com.walker.learningaboutspringboot1.service;
 
 import com.walker.learningaboutspringboot1.data.vo.v1.PersonVO;
-import com.walker.learningaboutspringboot1.data.vo.v2.PersonVOV2;
 import com.walker.learningaboutspringboot1.exception.ResourceNotFoundException;
 import com.walker.learningaboutspringboot1.mapper.Mapper;
 import com.walker.learningaboutspringboot1.model.Person;
