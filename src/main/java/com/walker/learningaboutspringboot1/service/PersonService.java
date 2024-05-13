@@ -2,6 +2,7 @@ package com.walker.learningaboutspringboot1.service;
 
 import com.walker.learningaboutspringboot1.controller.PersonController;
 import com.walker.learningaboutspringboot1.data.vo.v1.PersonVO;
+import com.walker.learningaboutspringboot1.exception.RequiredObjectIsNullException;
 import com.walker.learningaboutspringboot1.exception.ResourceNotFoundException;
 import com.walker.learningaboutspringboot1.mapper.Mapper;
 import com.walker.learningaboutspringboot1.model.Person;
@@ -36,6 +37,7 @@ public class PersonService {
     }
 
     public PersonVO create(PersonVO personVO) {
+        if (personVO == null) throw new RequiredObjectIsNullException();
         logger.info("Creating one person!"); //CRIANDO UMA PESSOA!
         Person person = Mapper.toPerson(personVO);
         PersonVO personVO1 = Mapper.toPersonVO(repository.save(person));
@@ -50,6 +52,7 @@ public class PersonService {
 //    }
 
     public PersonVO update(PersonVO personVO) {
+        if (personVO == null) throw new RequiredObjectIsNullException();
         logger.info("Updating one person!"); //ATUALIZANDO UMA PESSOA!
         Person person = repository.findById(personVO.getKey()).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!")); //NENHUM REGISTRO ENCONTRADO PARA ESTE ID!
         person.setFirstName(personVO.getFirstName());
