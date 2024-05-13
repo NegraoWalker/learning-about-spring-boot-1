@@ -1,10 +1,14 @@
 package com.walker.learningaboutspringboot1.data.vo.v1;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.springframework.hateoas.RepresentationModel;
 import java.io.Serializable;
 import java.util.Objects;
 
+@JsonPropertyOrder({"id", "firstName", "lastName", "address", "gender"}) //DEFINE A ORDEM DE RESPOSTA DOS PARÂMETROS
 public class PersonVO extends RepresentationModel<PersonVO> implements Serializable {
+    @JsonProperty("id") //INDICA QUE O PARÂMETRO KEY DEVE RETORNAR COMO ID
     private Long key; //IDENTIFICADOR
     private String firstName; //PRIMEIRO NOME
     private String lastName; //SOBRENOME

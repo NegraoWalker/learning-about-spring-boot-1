@@ -1,5 +1,6 @@
 package com.walker.learningaboutspringboot1.service;
 
+import com.walker.learningaboutspringboot1.controller.PersonController;
 import com.walker.learningaboutspringboot1.data.vo.v1.PersonVO;
 import com.walker.learningaboutspringboot1.exception.ResourceNotFoundException;
 import com.walker.learningaboutspringboot1.mapper.Mapper;
@@ -7,6 +8,9 @@ import com.walker.learningaboutspringboot1.model.Person;
 import com.walker.learningaboutspringboot1.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -20,18 +24,22 @@ public class PersonService {
     public PersonVO findById(Long id) {
         logger.info("Finding one person!"); //ENCONTRANDO UMA PESSOA!
         Person person = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!")); //NENHUM REGISTRO ENCONTRADO PARA ESTE ID!
-        return Mapper.toPersonVO(person);
+        PersonVO personVO = Mapper.toPersonVO(person);
+        return personVO.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel()); //IMPLEMENTAÇÃO DO HATEOAS PARA O MÉTODO FINDBYID()
     }
 
     public List<PersonVO> findAll() {
         logger.info("Finding all people!"); //ENCONTRANDO TODAS AS PESSOAS!
-        return Mapper.toListPersonVO(repository.findAll());
+        List<PersonVO> listPersonVO = Mapper.toListPersonVO(repository.findAll());
+        listPersonVO.stream().forEach(personVO -> personVO.add(linkTo(methodOn(PersonController.class).findById(personVO.getKey())).withSelfRel()));
+        return listPersonVO;
     }
 
     public PersonVO create(PersonVO personVO) {
         logger.info("Creating one person!"); //CRIANDO UMA PESSOA!
         Person person = Mapper.toPerson(personVO);
-        return Mapper.toPersonVO(repository.save(person));
+        PersonVO personVO1 = Mapper.toPersonVO(repository.save(person));
+        return personVO1.add(linkTo(methodOn(PersonController.class).findById(personVO.getKey())).withSelfRel()); //IMPLEMENTAÇÃO DO HATEOAS PARA O MÉTODO CREATE()
     }
 
     // VERSIONAMENTO PARA VERSÃO 2:
@@ -49,7 +57,8 @@ public class PersonService {
         person.setAddress(personVO.getAddress());
         person.setGender(personVO.getGender());
 
-        return Mapper.toPersonVO(repository.save(person));
+        PersonVO personVO1 = Mapper.toPersonVO(repository.save(person));
+        return personVO1.add(linkTo(methodOn(PersonController.class).findById(personVO.getKey())).withSelfRel()); //IMPLEMENTAÇÃO DO HATEOAS PARA O MÉTODO UPDATE()
     }
 
     public void delete(Long id) {
