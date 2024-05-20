@@ -4,6 +4,7 @@
     2. Spring Boot 3.2.5;
     3. Model Mapper 3.0.0;
     4. FlyWay 10.12.0;
+    5. OpenAPI Swagger 2.5.0;
 ## Design Patterns:
     MVC - Model-View-Controller
     VO - Value Object
@@ -23,3 +24,9 @@ https://mvnrepository.com/artifact/org.flywaydb/flyway-core
 Content Negotiation via query e header parameter: JSON, XML e YAML
 
 https://www.baeldung.com/spring-mvc-content-negotiation-json-xml
+
+Acesso a documentação da OpenAPI Swagger:
+
+http://localhost:8080/v3/api-docs
+
+http://localhost:8080/swagger-ui/index.html
