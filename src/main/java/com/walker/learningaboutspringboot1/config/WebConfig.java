@@ -9,14 +9,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig implements WebMvcConfigurer { //CLASSE USADA PARA CONFIGURAR DEPENDÊNCIAS ADICIONADAS
 
+    //CONFIGURAÇÃO DO YML:
     private static final MediaType MEDIA_TYPE_APPLICATION_YML = MediaType.valueOf("application/x-yaml");
 
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(new YamlJackson2HttpMessageConverter());
     }
+//----------------------------------------------------------------------------------------------------------
 
     //CONTENT NEGOTIATION VIA QUERY PARAMETER:
 //    @Override

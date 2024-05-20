@@ -8,7 +8,7 @@ import org.modelmapper.ModelMapper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mapper {
+public class Mapper { //CLASSE USADA PARA DEFINIR MÉTODOS DE CONVERSÃO ENTRE OBJETOS E OBJETOSVO
     private static ModelMapper modelMapper = new ModelMapper();
 
     //ModelMapper encontra um objeto do tipo Person, ele irá copiar o valor do campo id desse objeto para o campo key do objeto PersonVO e vice-versa:
